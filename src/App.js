@@ -1,3 +1,13 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+//  Project: Minitab Pre-Interview Assignment
+//
+//  Author: Taran Rickard
+//    - tbr5094@psu.edu | taranrickard@gmail.com
+//    - 484-949-5540
+//
+//  Created: 1/13/2021
+//
 import logo from './logo.svg';
 import './App.css';
 
