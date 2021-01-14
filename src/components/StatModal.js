@@ -1,3 +1,16 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// File: StatModal.js
+//
+// displays a modal with a table containing input values
+//
+// Author: Taran Rickard
+// - tbr5094@psu.edu | taranrickard@gmail.com
+// - 484-949-5540
+//
+// Created: 1/13/2021
+//
+
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';

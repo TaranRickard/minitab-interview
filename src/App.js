@@ -29,11 +29,18 @@ class App extends React.Component {
 		}
 	}
 
+	/////////////////////////////////////////
+	// hides the Modal with table
+	//
 	hideModalFunc = (e) => {
 		this.setState({
 			showModal: false
 		})
 	}
+
+	/////////////////////////////////////////
+	// initializes table and displays modal
+	//
 	showModalFunc = (statVars, hypTest) => {
 		this.setState({
 			showModal: true,
