@@ -39,8 +39,11 @@ class FormClass extends React.Component {
             Hypothesis: event.target.checked
         });
         if (!event.target.checked) {
+            var errors = this.state.formError;
+            errors[3] = false;
             this.setState({
-                muPrime: ''
+                muPrime: '',
+                formError: errors
             });
         }
     }
