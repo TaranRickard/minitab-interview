@@ -37,6 +37,11 @@ class FormClass extends React.Component {
         this.setState({
             Hypothesis: event.target.checked
         });
+        if (!event.target.checked) {
+            this.setState({
+                muPrime: ''
+            });
+        }
     }
 
     handleSubmit = (event) => {
@@ -103,6 +108,12 @@ class FormClass extends React.Component {
 
         if (formValid) {
             console.log('form is valid');
+            this.props.showModalFunc({
+                n: n,
+                mu: mu,
+                sigma: sigma,
+                muPrime: muPrime
+            }, this.state.Hypothesis);
         }
     }
 
