@@ -9,7 +9,7 @@ To install and run our React Application you will need the following on your mac
 #### The git CLI
 > https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
-Once this is set up, open a terminal in the folder you'd like to download the package to. Then download from github.
+Once this is set up, open a terminal in the folder you'd like to download the package to. Then, download from github.
 > git clone https://github.com/TaranRickard/minitab-interview.git
 
 after downloading from github, a new folder will be created in your current directory. Navigate into that directory.
@@ -36,12 +36,12 @@ The React Application will open in your default web browser automatically and th
 ## Serving the Production Build
 The github repo also stores the hostable production build of the application. To launch this on your machine, you will need a static server. 
 
-You can install a static server on any machine with Nod.js here:
+You can install a static server on any machine with Node.js here:
 > npm install -g serve
 
 This will install a server to the machine that can be launched from any directory. To serve the production build of our application, in the same minitab-directory ...
 
 > serve build
 
-The React Application will open in your default web browser automatically and the command line will also show a url.
+The command line will show a URL to open in the browser.
 

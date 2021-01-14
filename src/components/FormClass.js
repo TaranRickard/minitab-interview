@@ -1,3 +1,17 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// File: FormClass.js
+//
+// displays the form on the application, validates inputs and passes values
+// back to the rest of the app
+//
+// Author: Taran Rickard
+// - tbr5094@psu.edu | taranrickard@gmail.com
+// - 484-949-5540
+//
+// Created: 1/13/2021
+//
+
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -23,6 +37,11 @@ class FormClass extends React.Component {
         };
     }
 
+    /////////////////////////////////////////
+    // resets all form controls, disables
+    // the hypothesized mean input and resets
+    // all errors
+    //
     resetInputs = (event) => {
         this.setState({
             n: '',
@@ -34,6 +53,11 @@ class FormClass extends React.Component {
         })
     }
 
+    /////////////////////////////////////////
+    // called whenever the checkbox is
+    // clicked, resets the Hypothesized mean
+    // form control
+    //
     handleCheck = (event) => {
         this.setState({
             Hypothesis: event.target.checked
@@ -48,6 +72,12 @@ class FormClass extends React.Component {
         }
     }
 
+    /////////////////////////////////////////
+    // called whenever submit button is
+    // clicked. validates data, if valid
+    // passes data back to app to open
+    // the modal
+    //
     handleSubmit = (event) => {
         event.preventDefault();
         var formValid = true;
