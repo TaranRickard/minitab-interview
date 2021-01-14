@@ -29,7 +29,8 @@ class FormClass extends React.Component {
             mu: '',
             sigma: '',
             muPrime: '',
-            Hypothesis: false
+            Hypothesis: false,
+            formError: [false, false, false, false]
         })
     }
 
@@ -46,31 +47,57 @@ class FormClass extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        var formValid = true;
+        var errorMessages = this.state.formErrorMessages;
+        var errors = [false, false, false, false];
+
+        //check for blank inputs
+        if (this.state.n === '') {
+            errors[0] = true;
+            errorMessages[0] = 'Enter a Sample Size';
+            formValid = false;
+        }
+        if (this.state.mu === '') {
+            errors[1] = true;
+            errorMessages[1] = 'Enter a Sample Mean';
+            formValid = false;
+        }
+        if (this.state.sigma === '') {
+            errors[2] = true;
+            errorMessages[2] = 'Enter a Standard Deviation';
+            formValid = false;
+        }
+        if (this.state.Hypothesis) {
+            if (this.state.muPrime === '') {
+                errors[3] = true;
+                errorMessages[3] = 'Enter a Hypothesized Mean';
+                formValid = false;
+            }
+        }
+
+
         var n = Number(this.state.n);
         var mu = Number(this.state.mu);
         var sigma = Number(this.state.sigma);
         var muPrime = Number(this.state.muPrime);
-        var formValid = true;
 
-        var errorMessages = this.state.formErrorMessages;
-        var errors = [false, false, false, false];
 
         //n must be whole number >= 2
-        if (!Number.isInteger(n)) {
+        if (!Number.isInteger(n) && !errors[0]) {
             //n is not an integer
             formValid = false;
             errorMessages[0] = 'Sample size needs to be a whole number';
             errors[0] = true;
         }
-        else if (n < 2) {
+        else if ((n < 2) && !errors[0]) {
             //n is not >=2
             formValid = false;
-            errorMessages[0] = 'Sample size needs to be greater than 2';
+            errorMessages[0] = 'Sample size needs to be greater than or equal to 2';
             errors[0] = true;
         }
 
         //mu must be a number
-        if (Number.isNaN(mu)) {
+        if (Number.isNaN(mu) && !errors[1]) {
             //mu is not a number
             formValid = false;
             errorMessages[1] = 'Sample mean must be a number';
@@ -78,13 +105,13 @@ class FormClass extends React.Component {
         }
 
         //sigma must be a number > 0
-        if (Number.isNaN(sigma)) {
+        if (Number.isNaN(sigma) && !errors[2]) {
             //sigma is not a number
             formValid = false;
             errorMessages[2] = 'Standard Deviation must be a number';
             errors[2] = true;
         }
-        else if (sigma <= 0) {
+        else if ((sigma <= 0) && !errors[2]) {
             //sigma is not > 0
             formValid = false;
             errorMessages[2] = 'Standard Deviation must be greater than 0';
@@ -92,7 +119,7 @@ class FormClass extends React.Component {
         }
 
         //muPrime must be a number
-        if (this.state.Hypothesis) {
+        if (this.state.Hypothesis && !errors[3]) {
             if (Number.isNaN(muPrime)) {
                 //muPrime is not a number
                 formValid = false;
