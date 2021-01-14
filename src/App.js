@@ -11,55 +11,43 @@
 import './App.css';
 // import Button from 'react-bootstrap/Button';
 // import Form from 'react-bootstrap/Form';
-import FormClass from './components/FormClass'
+import FormClass from './components/FormClass';
+import StatModal from './components/StatModal';
+import React from 'react';
 
+class App extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			showModal: false
+		}
+	}
 
-function App() {
-	return (
-		<FormClass />
-		// <div className="App">
-		// 	<div class="w-50 mx-auto pt-5 text-left">
-		// 		<Form>
-		// 			<Form.Group controlId="formBasicEmail">
-		// 				<Form.Label as="h5" >Sample size:</Form.Label>
-		// 				<Form.Control type="email" />
-		// 			</Form.Group>
-		// 			<Form.Group controlId="formBasicEmail">
-		// 				<Form.Label as="h5">Sample mean:</Form.Label>
-		// 				<Form.Control type="email" />
-		// 			</Form.Group>
-		// 			<Form.Group controlId="formBasicEmail">
-		// 				<Form.Label as="h5">Standard Deviation:</Form.Label>
-		// 				<Form.Control type="email" />
-		// 			</Form.Group>
+	hideModalFunc = (e) => {
+		this.setState({
+			showModal: false
+		})
+	}
+	showModalFunc = (statVars, hypTest) => {
+		this.setState({
+			showModal: true,
+			statVars: statVars,
+			hypTest: hypTest
+		})
+	}
 
-		// 			<Form.Group controlId="formBasicCheckbox">
-		// 				<Form.Check type="checkbox" label="Check me out" />
-		// 			</Form.Group>
-		// 			<Form.Group controlId="formBasicEmail">
-		// 				<Form.Label as="h5">Hypothesized mean:</Form.Label>
-		// 				<Form.Control type="email" />
+	render() {
+		return (
+			<>
+				<FormClass showModalFunc={this.showModalFunc} />
+				<StatModal showModal={this.state.showModal}
+					hideModalFunc={this.hideModalFunc}
+					statVars={this.state.statVars}
+					hypTest={this.state.hypTest} />
+			</>
+		)
+	}
 
-		// 			</Form.Group>
-		// 			<div class="d-flex justify-content-end">
-		// 				<div class="px-2 form-btn">
-		// 					<Button block variant="primary" type="submit">
-		// 						OK
-		//   				</Button>
-		// 				</div>
-		// 				<div class="px-2 form-btn">
-		// 					<Button block variant="outline-secondary">
-		// 						Reset
-		//   				</Button>
-		// 				</div>
-
-		// 			</div>
-
-		// 		</Form>
-		// 	</div>
-
-		// </div>
-	);
 }
 
 export default App;
